@@ -6,6 +6,7 @@ public class BaseballGameController {
     public static void startGame(){
         Output.printGameStartMessage();
         ball.createBall();
-
+        Output.printInputGuideMessage();
+        Input.getThreeNumber();
     }
 }
