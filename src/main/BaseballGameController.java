@@ -1,3 +1,5 @@
+package main;
+
 public class BaseballGameController {
 
     private static Ball ball = new Ball();
