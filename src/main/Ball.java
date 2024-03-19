@@ -1,17 +1,24 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Random;
 
 public class Ball {
-    private static final int BALL_SIZE =3;
-    private int[] numbers;
+    private List<Integer> numbers;
 
-    public int[] createBall(){
+    public List<Integer> createBall(){
         Random random = new Random();
-        numbers = new int[BALL_SIZE];
+        numbers = new ArrayList<>();
+        HashMap<Integer, Boolean> check = new HashMap<Integer, Boolean>();
 
-        for(int i=0; i<BALL_SIZE; i++){
-            numbers[i] = random.nextInt(10);
+        while(numbers.size()<GameConfiguration.BALL_SIZE){
+            int number = random.nextInt(10);
+            if(!check.containsKey(number)) {
+                numbers.add(random.nextInt(10));
+                check.put(number, true);
+            }
         }
         return numbers;
     }
