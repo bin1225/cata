@@ -1,28 +1,46 @@
 package main;
 
-import java.util.HashSet;
+
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
+
 
 public class Input {
 
-
     private static Scanner scanner = new Scanner(System.in);
-    public static int[] getThreeNumber(){
-        int[] numbers = new int[3];
+    public static List<Integer> getThreeNumber(){
+        List<Integer> numbers = new ArrayList<>();
         while(true){
-            for(int i=0; i<3; i++){
-                numbers[i] = scanner.nextInt();
+            numbers.clear();
+            try{
+                for(int i=0; i<GameConfiguration.BALL_SIZE; i++){
+                    numbers.add(getNextValidInt());
+                }
+                if(InputValidator.validateInputNumber(numbers)) {
+                    return numbers;
+                }
+                else {
+                    Output.printInputErrorMessage();
+                }
+            } catch (InputMismatchException e){
+                Output.printInputGuideMessage();
             }
-            if(validNumberUnique(numbers)) return numbers;
+        }
+
+    }
+
+    private static int getNextValidInt(){
+
+        try{
+            return scanner.nextInt();
+        }
+        catch (InputMismatchException e){
+            scanner.nextLine();
+            throw e;
         }
     }
 
-    private static boolean validNumberUnique(int[] numbers){
-        Set<Integer> set = new HashSet<>();
-        for(int num: numbers){
-            set.add(num);
-        }
-        return set.size() == numbers.length;
-    }
+
 }
