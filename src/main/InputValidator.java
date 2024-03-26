@@ -26,7 +26,7 @@ public class InputValidator {
 
     private static boolean validateNumberInRange(List<Integer> numbers){
         for(int num: numbers){
-            if(num <0 || num>9) return false;
+            if(num <GameConfiguration.NUMBER_MIN || num>GameConfiguration.NUMBER_MAX) return false;
         }
         return true;
     }

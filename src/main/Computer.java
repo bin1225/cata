@@ -11,7 +11,7 @@ public class Computer {
         HashMap<Integer, Boolean> check = new HashMap<>();
 
         while(numbers.size()<GameConfiguration.BALL_SIZE){
-            int number = random.nextInt(10);
+            int number = random.nextInt(GameConfiguration.NUMBER_MAX+1);
             if(!check.containsKey(number)) {
                 numbers.add(number);
                 check.put(number, true);
