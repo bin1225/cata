@@ -13,7 +13,7 @@ public class Computer {
         while(numbers.size()<GameConfiguration.BALL_SIZE){
             int number = random.nextInt(10);
             if(!check.containsKey(number)) {
-                numbers.add(random.nextInt(10));
+                numbers.add(number);
                 check.put(number, true);
             }
         }
